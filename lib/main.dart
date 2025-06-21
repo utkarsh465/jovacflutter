@@ -1,163 +1,133 @@
 import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MaterialApp(
-    home: ProfilePage(),
-    debugShowCheckedModeBanner: false,
-  ));
+void main(){
+  runApp(Home());
 }
 
-class ProfilePage extends StatelessWidget {
-  final List<String> skills = [
-    'UI/UX Design',
-    'User Research',
-    'Prototyping',
-    'Wireframing',
-    'Design Systems',
-    'Interaction Design',
-  ];
+class Home extends StatelessWidget {
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        title: const Text(
-          'Profile',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        ),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 16),
-            child: Icon(Icons.settings, color: Colors.black),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            "Home",
+            style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
           ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            // Profile circle with person icon
-            const CircleAvatar(
-              radius: 60,
-              backgroundImage: AssetImage('assets/images/girl.jpg'),
-              backgroundColor: Colors.grey,
-            ),
-            const SizedBox(height: 16),
-
-            // Name and role
-            const Text(
-              'utkarsh raj',
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            const Text(
-              'Product Designer',
-              style: TextStyle(color: Colors.blue),
-            ),
-            const Text(
-              'San Francisco, CA',
-              style: TextStyle(color: Colors.blue),
-            ),
-            const SizedBox(height: 24),
-
-            // Skills section
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Skills',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-              ),
-            ),
-            const SizedBox(height: 12),
-            Wrap(
-              spacing: 10,
-              runSpacing: 10,
-              children: skills
-                  .map(
-                    (skill) => Chip(
-                  label: Text(skill),
-                  backgroundColor: Colors.grey[200],
-                ),
-              )
-                  .toList(),
-            ),
-            const SizedBox(height: 24),
-
-            // About section
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'About',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-              ),
-            ),
-            const SizedBox(height: 8),
-            const Text(
-              'utkarsh raj is a Product Designer with over 5 years of experience in creating user-centered designs. '
-                  'She specializes in creating user-centered designs. She specializes in UI/UX design,user research, and prototyping. Apeksha is passionate about solving complex problems '
-                  'and creating intuitive and engaging user experiences.',
-              style: TextStyle(height: 1.5),
-              textAlign: TextAlign.justify,
-            ),
-            const SizedBox(height: 24),
-
-            // Contact section
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Contact',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-              ),
-            ),
-            const SizedBox(height: 12),
-            ContactRow(
-              icon: Icons.email,
-              text: 'utkarsh.raj@email.com',
-            ),
-            ContactRow(
-              icon: Icons.phone,
-              text: '(555) 123-4567',
-            ),
-            ContactRow(
-              icon: Icons.link,
-              text: 'https://www.linkedin.com/in/utkarsh-raj-a91b83245/',
+          centerTitle: true,
+          actions: const [
+            Icon(Icons.settings),
+            SizedBox(
+              width: 10,
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class ContactRow extends StatelessWidget {
-  final IconData icon;
-  final String text;
-
-  const ContactRow({
-    super.key,
-    required this.icon,
-    required this.text,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6),
-      child: Row(
-        children: [
-          Icon(icon, color: Colors.grey[700]),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Text(
-              text,
-              style: const TextStyle(fontSize: 16),
+        body: Column(
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  alignment: Alignment.center,
+                  child: const Text(
+                    "Welcome to Our App",
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700),
+                  ),
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  height: 60,
+                  child: const Text(
+                    "Explore the features and information we offer. Stay updates with the latest news and insights.",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                  ),
+                )
+              ],
             ),
-          )
-        ],
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              alignment: Alignment.centerLeft,
+              padding: EdgeInsets.only(left: 20),
+              child: const Text("App Highlights",
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 22)),
+            ),
+            const SizedBox(height: 20),
+            Column(
+              children: [
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: Container(
+                        padding: const EdgeInsets.all(10.0),
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade300,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Icon(Icons.explore_outlined),
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Explore",
+                          style: TextStyle(fontSize: 16),
+                          textAlign: TextAlign.start,
+                        ),
+                        Text(
+                          "Discover new content and features",
+                          style: TextStyle(
+                              fontSize: 14, color: Colors.indigo.shade400),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: Container(
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade300,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Icon(Icons.mail_outline),
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Contact",
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        Text(
+                          "Get in touch with us",
+                          style: TextStyle(
+                              fontSize: 14, color: Colors.indigo.shade400),
+                        ),
+                      ],
+                    )
+                  ],
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
