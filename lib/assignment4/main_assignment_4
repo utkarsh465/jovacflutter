@@ -1,0 +1,220 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int counter = 0;
+  bool isSwitched = false;
+  bool isChecked1 = false;
+  bool isChecked2 = false;
+  bool isChecked3 = false;
+
+  void increment() {
+    setState(() {
+      counter++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Assignment-4",
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text('Interactive Demo',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.white)),
+            ],
+          ),
+          backgroundColor: Colors.green[900],
+        ),
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                "Counter",
+                style: TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 10),
+              const Text(
+                "Tap the button to increment the counter.",
+                textAlign: TextAlign.start,
+                style: TextStyle(fontSize: 16),
+              ),
+              const SizedBox(height: 20),
+              Text(
+                'Count : $counter',
+                textAlign: TextAlign.start,
+                style: TextStyle(fontSize: 16),
+              ),
+              Center(
+                child: ElevatedButton(
+                    onPressed: () {
+                      increment();
+                    },
+                    style: ButtonStyle(
+                      backgroundColor:
+                      WidgetStateProperty.all(Colors.greenAccent[100]),
+                    ),
+                    child: Text(
+                      "Increment",
+                      style: TextStyle(
+                          color: Colors.green[900],
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),
+                    )),
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                "Toggle Visiblity",
+                style: TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 10),
+              const Text(
+                "Toggle the visiblity of the widget below",
+                textAlign: TextAlign.start,
+                style: TextStyle(fontSize: 16),
+              ),
+              const SizedBox(height: 16),
+              Container(
+                height: 30,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Show Widget", style: TextStyle(fontSize: 20)),
+                    Switch(
+                      value: isSwitched,
+                      onChanged: (bool value) {
+                        setState(() {
+                          isSwitched = value;
+                        });
+                      },
+                      activeColor: Colors.green,
+                      inactiveThumbColor: Colors.blueGrey,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+              if (isSwitched)
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: Image.asset('assets/image/content.png'))
+              else
+                const SizedBox.shrink(),
+              const SizedBox(height: 16),
+              const Text(
+                "Task List",
+                style: TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const Text(
+                "Mark tasks as completed by checking the boxes.",
+                textAlign: TextAlign.start,
+                style: TextStyle(fontSize: 16),
+              ),
+              const SizedBox(height: 10),
+              Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Task 1 : Buy groceries",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      Checkbox(
+                        value: isChecked1,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            isChecked1 = value!;
+                          });
+                        },
+                        activeColor: Colors.green,
+                        side: const BorderSide(
+                          // 👈 Border when unchecked
+                          color: Colors.grey,
+                          width: 2,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Task 2 : Finish report",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      Checkbox(
+                        value: isChecked2,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            isChecked2 = value!;
+                          });
+                        },
+                        activeColor: Colors.green,
+                        side: const BorderSide(
+                          // 👈 Border when unchecked
+                          color: Colors.grey,
+                          width: 2,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Task 3 : Call Mom",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      Checkbox(
+                        value: isChecked3,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            isChecked3 = value!;
+                          });
+                        },
+                        activeColor: Colors.green,
+                        side: const BorderSide(
+                          // 👈 Border when unchecked
+                          color: Colors.grey,
+                          width: 2,
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
