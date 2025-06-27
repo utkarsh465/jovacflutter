@@ -1,0 +1,46 @@
+import 'package:first_project/assignment3/about.dart';
+import 'package:first_project/assignment3/contact_form.dart';
+import 'package:first_project/assignment3/home.dart';
+import 'package:flutter/material.dart';
+
+void main(){
+  runApp(MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int currentIndex = 0;
+  final List<Widget> _pages = const [
+    Center(child: Home()),
+    Center(child: About()),
+    Center(child: Contact()),
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Assignment-3",
+      home: Scaffold(
+        body: _pages[currentIndex],
+        bottomNavigationBar: BottomNavigationBar(
+            currentIndex : currentIndex,
+            onTap: (value){
+              setState(() {
+                currentIndex=value;
+              });
+            },
+            items: const [
+              BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home", tooltip: "Go to Home"),
+              BottomNavigationBarItem(icon: Icon(Icons.info), label: "About", tooltip: "About"),
+              BottomNavigationBarItem(icon: Icon(Icons.mail), label: "Contact", tooltip: "Contact Us"),
+            ]),
+      ),
+    );
+  }
+}
