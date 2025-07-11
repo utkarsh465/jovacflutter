@@ -24,14 +24,14 @@ class About extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
+              SizedBox(
                 height: 50,
                 width: 500,
                 child: const Text("Our Mission",
                     style:
                     TextStyle(fontSize: 30, fontWeight: FontWeight.w800)),
               ),
-              Container(
+              SizedBox(
                 height: 140,
                 width: 400,
                 child: const Text(
@@ -39,14 +39,14 @@ class About extends StatelessWidget {
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                     textAlign: TextAlign.start),
               ),
-              Container(
+              SizedBox(
                 height: 50,
                 width: 500,
                 child: const Text("Background",
                     style:
                     TextStyle(fontSize: 30, fontWeight: FontWeight.w800)),
               ),
-              Container(
+              SizedBox(
                 height: 160,
                 width: 400,
                 child: const Text(
@@ -54,14 +54,14 @@ class About extends StatelessWidget {
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                     textAlign: TextAlign.start),
               ),
-              Container(
+              SizedBox(
                 height: 50,
                 width: 500,
                 child: const Text("Contact Us",
                     style:
                     TextStyle(fontSize: 30, fontWeight: FontWeight.w800)),
               ),
-              Container(
+              SizedBox(
                 height: 160,
                 width: 400,
                 child: const Text(
